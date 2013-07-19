@@ -196,56 +196,85 @@
 					</section>
 					<section>
 						<h2>A Basic Example</h2>
-<pre><code>
-	<?php
+<pre><code>/* setup forking daemon */
+$server = new fork_daemon();
+$server->max_work_per_child_set(3);
+$server->register_child_run("process_child_run");
 
-	require_once('../fork_daemon.php');
+/* add work units */
+$data_set = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+$server->addwork($data_set);
 
-	/* setup forking daemon */
-	$server = new fork_daemon();
-	$server->max_children_set(5);
-	$server->max_work_per_child_set(3);
-	$server->register_child_run("process_child_run");
-	$server->register_parent_child_exit("process_child_exit");
+/* process work blocking mode */
+$server->process_work(true);
 
-	test_blocking();
+/* registered call back function */
+function process_child_run($data_set)
+{
+  echo "I'm child working on: " . implode(",", $data_set) . PHP_EOL;
+}</pre></code>
 
-	function test_blocking()
+					</section>
+					<section>
+						<h2>Buckets</h2>
+<pre><code>define("BUCKET1", 1);
+define("BUCKET2", 2);
+
+$server->add_bucket(BUCKET1);
+$server->add_bucket(BUCKET2);
+$server->max_children_set(2, BUCKET1);
+$server->max_children_set(5, BUCKET2);
+$server->register_child_run("process_child_run_1", BUCKET1);
+$server->register_child_run("process_child_run_2", BUCKET2);
+
+$data_set = array();
+for($i=0; $i<100; $i++) $data_set[] = $i;
+
+$server->addwork($data_set, "", BUCKET1);
+$server->addwork($data_set, "", BUCKET2);
+</code></pre>
+					</section>
+					<section>
+						<h2>Resource Management</h2>
+<pre><code>/* setup forking daemon */
+$server = new fork_daemon();
+$server->register_parent_prefork(array('prefork'));
+...
+
+function prefork()
+{
+  echo "I'm closing resources..." . PHP_EOL;
+}</code></pre>
+					</section>
+					<section>
+						<h2>Logging</h2>
+<pre><code>$log = new Logger('forker');
+
+/* setup forking daemon */
+$s = new fork_daemon();
+$s->register_logging(array('log', 'addCritical'), fork_daemon::LOG_LEVEL_CRIT);
+$s->register_logging(array('log', 'addWarning'),  fork_daemon::LOG_LEVEL_WARN);
+$s->register_logging(array('log', 'addInfo'),     fork_daemon::LOG_LEVEL_INFO);
+$s->register_logging(array('log', 'addDebug'),    fork_daemon::LOG_LEVEL_DEBUG);</code></pre>
+					</section>
+					<section>
+						<h2>Helpers</h2>
+<pre><code>/* setup forking daemon */
+$server = new fork_daemon();
+$server->helper_process_spawn('helper');
+...
+function helper()
+{
+	echo "starting helper" . PHP_EOL;
+
+	for ($i = 0; $i < 3; $i++)
 	{
-		global $server;
-
-		echo "Adding 10 units of work\n";
-
-		$data_set = array();
-		for($i=0; $i<10; $i++) $data_set[] = $i;
-		shuffle($data_set);
-		$server->addwork($data_set);
-
-		/* process work blocking mode */
-		$server->process_work(true);
+		echo "helper: " . $i . PHP_EOL;
+		sleep(1);
 	}
 
-	/*
-	* CALLBACK FUNCTIONS
-	*/
-
-	/* registered call back function */
-	function process_child_run($data_set, $identifier = "")
-	{
-		echo "I'm child working on: "
-		. implode(",", $data_set)
-		. ($identifier == "" ? "" : " (id:$identifier)") . "\n";
-		sleep(rand(4,8));
-	}
-
-	/* registered call back function */
-	function process_child_exit($pid, $identifier = "")
-	{
-		echo "Child $pid just finished"
-		. ($identifier == "" ? "" : " (id:$identifier)") . "\n";
-}
-</pre></code>
-
+	exit();
+}</code></pre>
 					</section>
 				</section>
 
