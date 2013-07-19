@@ -1,0 +1,3 @@
+[submodule "modules/forkdaemon-php"]
+	path = modules/forkdaemon-php
+	url = https://github.com/barracudanetworks/forkdaemon-php.git
