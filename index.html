@@ -126,7 +126,19 @@
 						</aside>
 					</section>
 					<section>
-						<h2>Our Daemons</h2>
+						<h2>Why PHP?</h2>
+						<p>
+							<ul>
+								<li>Fast and easy development</li>
+								<li>Works well for both web sites and backends</li>
+								<li>Popularity (makes it easier to find developers)</li>
+								<li>The founding developers knew it</li>
+								<li>Ability to share code between Appliance and Cloud</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<h2>Our Components</h2>
 
 						<table>
 							<tr>
@@ -157,19 +169,6 @@
 						</table>
 					</section>
 					<section>
-						<h2>Why PHP?</h2>
-
-						<p>
-							<ul>
-								<li>Fast and easy to code in</li>
-								<li>Works well for both web sites and backends</li>
-								<li>Popularity (makes it easier to find developers)</li>
-								<li>The founding developers knew it</li>
-								<li>Ability to share code between Appliance and Cloud</li>
-							</ul>
-						</p>
-					</section>
-					<section>
 						<h2>Shared Code</h2>
 
 						<p>
@@ -187,8 +186,69 @@
 				</section>
 				<section>
 					<section>
-						<h2>Forking</h2>
+						<h2>What is a Daemon</h2>
+						<p>dae·mon
+						/ˈdēmən/
+						Noun
+						(in ancient Greek belief) A divinity or supernatural being of a nature between gods and humans.
+						A background process that handles requests for services such as print spooling and is dormant when not required.
+						</p>
+					</section>
+					<section>
+						<h2>Our Forking Library</h2>
+						Link to github
+					</section>
+					<section>
+						<h2>A Basic Example</h2>
+<pre><code>
+	<?php
 
+	require_once('../fork_daemon.php');
+
+	/* setup forking daemon */
+	$server = new fork_daemon();
+	$server->max_children_set(5);
+	$server->max_work_per_child_set(3);
+	$server->register_child_run("process_child_run");
+	$server->register_parent_child_exit("process_child_exit");
+
+	test_blocking();
+
+	function test_blocking()
+	{
+		global $server;
+
+		echo "Adding 10 units of work\n";
+
+		$data_set = array();
+		for($i=0; $i<10; $i++) $data_set[] = $i;
+		shuffle($data_set);
+		$server->addwork($data_set);
+
+		/* process work blocking mode */
+		$server->process_work(true);
+	}
+
+	/*
+	* CALLBACK FUNCTIONS
+	*/
+
+	/* registered call back function */
+	function process_child_run($data_set, $identifier = "")
+	{
+		echo "I'm child working on: "
+		. implode(",", $data_set)
+		. ($identifier == "" ? "" : " (id:$identifier)") . "\n";
+		sleep(rand(4,8));
+	}
+
+	/* registered call back function */
+	function process_child_exit($pid, $identifier = "")
+	{
+		echo "Child $pid just finished"
+		. ($identifier == "" ? "" : " (id:$identifier)") . "\n";
+}
+</pre></code>
 
 					</section>
 				</section>
@@ -222,9 +282,9 @@
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
 				// multiplex: {
-				// 	secret: '13682960645763249742', // null so the clients do not have control of the master presentation
-				// 	id: '495d7295935060d6', // id, obtained from socket.io server
-				// 	url: 'localhost:1948' // Location of your socket.io server
+				//secret: '13682960645763249742', // null so the clients do not have control of the master presentation
+				//id: '495d7295935060d6', // id, obtained from socket.io server
+				//url: 'localhost:1948' // Location of your socket.io server
 				// },
 
 				// Optional libraries used to extend on reveal.js
