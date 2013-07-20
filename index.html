@@ -86,21 +86,28 @@
 
 				<section>
 					<h2>Presentation Agenda</h2>
-					<ul>
-						<li>Why PHP Daemons?</li>
-						<li>Implimentation
-							<ul>
-								<li>Signal Handling</li>
-								<li>Resource Managment</li>
-								<li>Interprocess Communication</li>
-							</ul>
-						</li>
-						<li>Real World Results</li>
-					</ul>
-					</p>
+					<p>What is a Daemon</p>
+					<p>Why PHP Daemons</p>
+					<p>Using our library</p>
+					<p>Real World Results</p>
 
 					<aside class="notes">
 					</aside>
+				</section>
+
+				<!-- What is a Daemon? -->
+				<section>
+					<section>
+						<h2>What is a Daemon</h2>
+						<h4 style="text-align: left;">dae·mon</h4>
+						<p style="text-align: left;"><i>/ˈdēmən/</i></p>
+						<p style="text-align: left;"><b>Noun</b><br />
+						<ol style="padding-left: 15px;">
+							<li style="padding-bottom: 10px;">(in ancient Greek belief) A divinity or supernatural being of a nature between gods and humans.</li>
+							<li>A background process that handles requests for services such as print spooling and is dormant when not required.</li>
+						</ol>
+						</p>
+					</section>
 				</section>
 
 				<!-- Why PHP Daemons? -->
@@ -182,17 +189,11 @@
 				</section>
 				<section>
 					<section>
-						<h2>What is a Daemon</h2>
-						<h4 style="text-align: left;">dae·mon</h4>
-						<p style="text-align: left;"><i>/ˈdēmən/</i></p>
-						<p style="text-align: left;"><b>Noun</b><br />
-						(in ancient Greek belief) A divinity or supernatural being of a nature between gods and humans.
-						A background process that handles requests for services such as print spooling and is dormant when not required.
-						</p>
-					</section>
-					<section>
 						<h2>Our Forking Library</h2>
-						Link to github
+						<a href="http://git.io/forkdaemon-php" style="margin-bottom: 50px;">http://git.io/forkdaemon-php</a>
+
+						<p>Actively maintained for 5+ years.</p>
+						<p>Open source just days ago!</p>
 					</section>
 					<section>
 						<h2>A Basic Example</h2>
@@ -269,10 +270,10 @@ function prefork()
 
 /* setup forking daemon */
 $s = new fork_daemon();
-$s->register_logging(array('log', 'addCritical'), fork_daemon::LOG_LEVEL_CRIT);
-$s->register_logging(array('log', 'addWarning'),  fork_daemon::LOG_LEVEL_WARN);
-$s->register_logging(array('log', 'addInfo'),     fork_daemon::LOG_LEVEL_INFO);
-$s->register_logging(array('log', 'addDebug'),    fork_daemon::LOG_LEVEL_DEBUG);</code></pre>
+$s->register_logging(array($log, 'addCritical'), fork_daemon::LOG_LEVEL_CRIT);
+$s->register_logging(array($log, 'addWarning'),  fork_daemon::LOG_LEVEL_WARN);
+$s->register_logging(array($log, 'addInfo'),     fork_daemon::LOG_LEVEL_INFO);
+$s->register_logging(array($log, 'addDebug'),    fork_daemon::LOG_LEVEL_DEBUG);</code></pre>
 					</section>
 					<section>
 						<video width="100%" height="100%" data-autoplay muted>
@@ -322,10 +323,8 @@ function helper()
 					</section>
 					<section>
 						<h2>Statistics</h2>
-						<ul>
-							<li>Appliance</li>
-							<li>Cloud</li>
-						</ul>
+						<p class="fragment fade-in">A backup is started <strong>every two seconds</strong></p>
+						<p class="fragment fade-in">Cloud processes a <strong>petabyte</strong> every <strong>1.5 days</strong></p>
 					</section>
 				</section>
 			</div>
