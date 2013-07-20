@@ -71,8 +71,7 @@
 					</p>
 
 					<aside class="notes">
-						Started with BitLeap in 2006
-						Barracuda aquired BitLeap in Sept of 2008
+						Andy
 					</aside>
 				</section>
 				<section>
@@ -82,6 +81,10 @@
 						Software Engineer @ <a href="https://www.barracuda.com/">Barracuda Networks</a><br />
 						web developer and new employee at Barracuda <a href="https://www.barracuda.com/backup">Backup</a>
 					</p>
+
+					<aside class="notes">
+						Jon
+					</aside>
 				</section>
 
 				<section>
@@ -92,6 +95,7 @@
 					<p>Real World Results</p>
 
 					<aside class="notes">
+						Jon
 					</aside>
 				</section>
 
@@ -107,6 +111,10 @@
 							<li>A background process that handles requests for services such as print spooling and is dormant when not required.</li>
 						</ol>
 						</p>
+
+						<aside class="notes">
+							Jon
+						</aside>
 					</section>
 				</section>
 
@@ -115,6 +123,8 @@
 					<section>
 						<h2>Why PHP Daemons?</h2>
 						<aside class="notes">
+							Andy
+
 							To better understand why we use PHP, let's take a step back and look at the backup product.
 						</aside>
 					</section>
@@ -123,6 +133,8 @@
 
 						<img src="images/bbs-1k-foot-architecture.png" style="border: 0px; box-shadow: none;" />
 						<aside class="notes">
+							Andy
+
 							Source Servers: Windows / Linux
 							- run our C++ based agent
 							Backup Appliance & Cloud are Linux machines that we manage
@@ -139,6 +151,10 @@
 								<li>Ability to share code between Appliance and Cloud</li>
 							</ul>
 						</p>
+
+						<aside class="notes">
+							Jon
+						</aside>
 					</section>
 					<section>
 						<h2>Our Components</h2>
@@ -170,6 +186,10 @@
 								</td>
 							</tr>
 						</table>
+
+						<aside class="notes">
+							Andy
+						</aside>
 					</section>
 					<section>
 						<h2>Shared Code</h2>
@@ -185,6 +205,10 @@
 								<li>File System</li>
 							</ul>
 						</p>
+
+						<aside class="notes">
+							Jon
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -194,6 +218,10 @@
 
 						<p>Actively maintained for 5+ years.</p>
 						<p>Open source just days ago!</p>
+
+						<aside class="notes">
+							Andy
+						</aside>
 					</section>
 					<section>
 						<h2>A Basic Example</h2>
@@ -214,6 +242,9 @@ function process_child_run($data_set)
 {
   echo "I'm child working on: " . implode(",", $data_set) . PHP_EOL;
 }</pre></code>
+						<aside class="notes">
+							Jon
+						</aside>
 					</section>
 					<section>
 						<video width="100%" height="100%" data-autoplay muted>
@@ -239,6 +270,9 @@ for($i=0; $i<100; $i++) $data_set[] = $i;
 $server->addwork($data_set, "", BUCKET1);
 $server->addwork($data_set, "", BUCKET2);
 </code></pre>
+						<aside class="notes">
+							Andy
+						</aside>
 					</section>
 					<section>
 						<video width="100%" height="100%" data-autoplay muted>
@@ -257,6 +291,10 @@ function prefork()
 {
   echo "I'm closing resources..." . PHP_EOL;
 }</code></pre>
+
+						<aside class="notes">
+							Andy
+						</aside>
 					</section>
 					<section>
 						<video width="100%" height="100%" data-autoplay muted>
@@ -274,6 +312,10 @@ $s->register_logging(array($log, 'addCritical'), fork_daemon::LOG_LEVEL_CRIT);
 $s->register_logging(array($log, 'addWarning'),  fork_daemon::LOG_LEVEL_WARN);
 $s->register_logging(array($log, 'addInfo'),     fork_daemon::LOG_LEVEL_INFO);
 $s->register_logging(array($log, 'addDebug'),    fork_daemon::LOG_LEVEL_DEBUG);</code></pre>
+
+						<aside class="notes">
+							Jon
+						</aside>
 					</section>
 					<section>
 						<video width="100%" height="100%" data-autoplay muted>
@@ -299,6 +341,10 @@ function helper()
 
 	exit();
 }</code></pre>
+
+						<aside class="notes">
+							Andy
+						</aside>
 					</section>
 					<section>
 						<video width="100%" height="100%" data-autoplay muted>
@@ -311,20 +357,32 @@ function helper()
 				<!-- Real World Results -->
 				<section>
 					<section>
-						<h2>PHP Daemons in action</h2>
+						<h2>Storage Daemon</h2>
 						<video width="100%" height="100%" data-autoplay loop muted>
 							<source src="./videos/cloud.mov" type="video/mp4">
 							Your browser does not support the video tag.
 						</video>
+
+						<aside class="notes">
+							Jon
+						</aside>
 					</section>
 					<section>
 						<h2>Our Daemons at work</h2>
 						<img src="./images/screenshot.png" />
+
+						<aside class="notes">
+							Andy
+						</aside>
 					</section>
 					<section>
 						<h2>Statistics</h2>
 						<p class="fragment fade-in">A backup is started <strong>every two seconds</strong></p>
 						<p class="fragment fade-in">Cloud processes a <strong>petabyte</strong> every <strong>1.5 days</strong></p>
+
+						<aside class="notes">
+							Jon
+						</aside>
 					</section>
 				</section>
 			</div>
