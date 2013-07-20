@@ -269,10 +269,10 @@ function prefork()
 
 /* setup forking daemon */
 $s = new fork_daemon();
-$s->register_logging(array('log', 'addCritical'), fork_daemon::LOG_LEVEL_CRIT);
-$s->register_logging(array('log', 'addWarning'),  fork_daemon::LOG_LEVEL_WARN);
-$s->register_logging(array('log', 'addInfo'),     fork_daemon::LOG_LEVEL_INFO);
-$s->register_logging(array('log', 'addDebug'),    fork_daemon::LOG_LEVEL_DEBUG);</code></pre>
+$s->register_logging(array($log, 'addCritical'), fork_daemon::LOG_LEVEL_CRIT);
+$s->register_logging(array($log, 'addWarning'),  fork_daemon::LOG_LEVEL_WARN);
+$s->register_logging(array($log, 'addInfo'),     fork_daemon::LOG_LEVEL_INFO);
+$s->register_logging(array($log, 'addDebug'),    fork_daemon::LOG_LEVEL_DEBUG);</code></pre>
 					</section>
 					<section>
 						<video width="100%" height="100%" data-autoplay muted>
