@@ -120,6 +120,7 @@
 								<li>Works well for both web sites and backends</li>
 								<li>Popularity (makes it easier to find developers)</li>
 								<li>The founding developers knew it</li>
+								<li>Allows us to share code across products</li>
 								<li>Ability to share code between Appliance and Cloud</li>
 							</ul>
 						</p>
@@ -207,57 +208,25 @@
 						</aside>
 					</section>
 					<section>
-						<h2>Our Components</h2>
-
-						<table>
-							<tr>
-								<th><h3><img src="./images/appliance.png" style="position: relative; top: 13px; border: 0px; box-shadow: none;"/></h3></th>
-								<th><h3><img src="./images/cloud.png" style="border: 0px; box-shadow: none;"/></h3></th>
-							</tr>
-							<tr>
-								<td>
-									<ul>
-										<li>Backup</li>
-										<li>Restore</li>
-										<li><b>Replication</b></li>
-										<li><b>Retention</b></li>
-										<li>Stats</li>
-										<li><b>Storage</b></li>
-										<li><b>Web UI</b></li>
-									</ul>
-								</td>
-								<td>
-									<ul>
-										<li><b>Replication</b></li>
-										<li><b>Retention</b></li>
-										<li><b>Storage</b></li>
-										<li><b>Web UI</b></li>
-									</ul>
-								</td>
-							</tr>
-						</table>
-
+						<h2>Copy Daemons</h2>
+						<ul>
+							<li>Thumbnailer</li>
+							<li>Storage Daemon</li>
+							<li>Others?</li>
+						</ul>
 						<aside class="notes">
 							Andy
 						</aside>
 					</section>
 					<section>
-						<h2>Shared Code</h2>
+						<h2>Our Forking Library</h2>
+						<a href="http://git.io/forkdaemon-php" style="margin-bottom: 50px;">http://git.io/forkdaemon-php</a>
 
-						<p>
-							<ul>
-								<li>Database</li>
-								<li>Forking</li>
-								<li>Network Protocol</li>
-								<li>Graphing</li>
-								<li>Process Management</li>
-								<li>FUSE Layer</li>
-								<li>File System</li>
-							</ul>
-						</p>
+						<p>Actively maintained for 5+ years.</p>
+						<p>Open source just days ago!</p>
 
 						<aside class="notes">
-							Jon
+							Andy
 						</aside>
 					</section>
 				</section>
@@ -270,6 +239,25 @@
 
 						<aside class="notes">
 							Andy
+						</aside>
+					</section>
+					<section>
+						<p>Show screenshot of web UI with nice image thumbnailed</p>
+
+						<aside class="notes">
+							Jon
+						</aside>
+					</section>
+					<section>
+						<h2>Without Forking</h2>
+						<ul>
+							<li>Run as cron</li>
+							<li>go through files one at a time</li>
+							<li>get hung up on large files</li>
+							<li>etc. etc.</li>
+						</ul>
+						<aside class="notes">
+							Jon
 						</aside>
 					</section>
 					<section>
@@ -407,7 +395,7 @@ function helper()
 				<section>
 					<section>
 						<h2>Storage Daemon</h2>
-						<video width="100%" height="100%" data-autoplay loop muted>
+						<video width="100%" height="500px" data-autoplay loop muted>
 							<source src="./videos/cloud.mov" type="video/mp4">
 							Your browser does not support the video tag.
 						</video>
@@ -418,7 +406,7 @@ function helper()
 					</section>
 					<section>
 						<h2>Our Daemons at work</h2>
-						<img src="./images/screenshot.png" />
+						<img src="./images/screenshot.png" style="height:500px;" />
 
 						<aside class="notes">
 							Andy
@@ -428,6 +416,7 @@ function helper()
 						<h2>Statistics</h2>
 						<p class="fragment fade-in">A backup is started <strong>every two seconds</strong></p>
 						<p class="fragment fade-in">Cloud processes a <strong>petabyte</strong> every <strong>1.5 days</strong></p>
+						<p class="fragment fade-in">Since launching <strong>4</strong> months ago:</p>
 
 						<aside class="notes">
 							Jon
