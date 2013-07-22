@@ -187,17 +187,6 @@
 						</aside>
 					</section>
 					<section>
-						<h2>Our Forking Library</h2>
-						<a href="http://git.io/forkdaemon-php" style="margin-bottom: 50px;">http://git.io/forkdaemon-php</a>
-
-						<p>Actively maintained for 5+ years.</p>
-						<p>Open source just days ago!</p>
-
-						<aside class="notes">
-							Andy
-						</aside>
-					</section>
-					<section>
 						<img src="images/Copy-Logo-Vertical.png" style="border: 0px; box-shadow: none;" />
 						<aside class="notes">
 							Andy
@@ -261,7 +250,7 @@
 						</aside>
 					</section>
 					<section>
-						<h2>A Basic Example</h2>
+						<h2>Introduce Forking</h2>
 <pre><code>/* setup forking daemon */
 $server = new fork_daemon();
 $server->max_work_per_child_set(3);
@@ -288,6 +277,9 @@ function process_child_run($data_set)
 							<source src="./videos/examples/1-basic.mov" type="video/mp4">
 							Your browser does not support the video tag.
 						</video>
+					</section>
+					<section>
+						<h2>Documents vs. Images</h2>
 					</section>
 					<section>
 						<h2>Buckets</h2>
@@ -318,6 +310,9 @@ $server->addwork($data_set, "", BUCKET2);
 						</video>
 					</section>
 					<section>
+						<h2>Open Database Connections</h2>
+					</section>
+					<section>
 						<h2>Resource Management</h2>
 <pre><code>/* setup forking daemon */
 $server = new fork_daemon();
@@ -340,25 +335,7 @@ function prefork()
 						</video>
 					</section>
 					<section>
-						<h2>Logging</h2>
-<pre><code>$log = new Logger('forker');
-
-/* setup forking daemon */
-$s = new fork_daemon();
-$s->register_logging(array($log, 'addCritical'), fork_daemon::LOG_LEVEL_CRIT);
-$s->register_logging(array($log, 'addWarning'),  fork_daemon::LOG_LEVEL_WARN);
-$s->register_logging(array($log, 'addInfo'),     fork_daemon::LOG_LEVEL_INFO);
-$s->register_logging(array($log, 'addDebug'),    fork_daemon::LOG_LEVEL_DEBUG);</code></pre>
-
-						<aside class="notes">
-							Jon
-						</aside>
-					</section>
-					<section>
-						<video width="100%" height="100%" data-autoplay muted>
-							<source src="./videos/examples/4-logging.mov" type="video/mp4">
-							Your browser does not support the video tag.
-						</video>
+						<h2>Dependencies Crashing</h2>
 					</section>
 					<section>
 						<h2>Helpers</h2>
@@ -417,6 +394,11 @@ function helper()
 						<p class="fragment fade-in">A backup is started <strong>every two seconds</strong></p>
 						<p class="fragment fade-in">Cloud processes a <strong>petabyte</strong> every <strong>1.5 days</strong></p>
 						<p class="fragment fade-in">Since launching <strong>4</strong> months ago:</p>
+						<ul style="list-style:none;">
+							<li class="fragment fade-in"><strong>1 million</strong> users.</li>
+							<li class="fragment fade-in"><strong>1 billion</strong> files.</li>
+							<li class="fragment fade-in"><strong>1 petabyte</strong> of data.</li>
+						</ul>
 
 						<aside class="notes">
 							Jon
@@ -425,11 +407,11 @@ function helper()
 					<section>
 						<h1>Daemonizing PHP</h1>
 						<h3>Using PHP to run your backend processes</h3>
+						<h4>GitHub Repo</h4>
+						<a href="http://git.io/forkdaemon-php" style="margin-bottom: 50px;">http://git.io/forkdaemon-php</a>
 						<p>
 							<small>By <a href="http://andyblyler.com">Andy Blyler</a> (<a href="http://twitter.com/ablyler">@ablyler</a>) and <a href="">Jon Kuperman</a> (<a href="http://twitter.com/insitedesignlab">@insitedesignlab</a>) </small>
 						</p>
-						<h3>GitHub Repo</h3>
-						<a href="http://git.io/forkdaemon-php" style="margin-bottom: 50px;">http://git.io/forkdaemon-php</a>
 					</section>
 				</section>
 			</div>
