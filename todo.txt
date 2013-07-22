@@ -1,0 +1,12 @@
+Things we're going to do:
+Andy -- add meat to thumb nailer section
+Make the terminal videos larger
+In the end column ( other options and why we chose this approach )
+Slide animation of the overall flow - parent, children, buckets
+
+
+Things we might do:
+How could you use our forking library
+Why did we build this in the first place ( Early History )
+Maybe word cloud for options you can set
+Use cacti graphs to show things like buckets helping.
