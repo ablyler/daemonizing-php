@@ -15,33 +15,33 @@ function test_bucket()
 {
 	global $server;
 
-	define("BUCKET1", 1);
-	define("BUCKET2", 2);
+	define("IMAGES", 1);
+	define("DOCUMENTS", 2);
 
-	$server->add_bucket(BUCKET1);
-	$server->add_bucket(BUCKET2);
-	$server->max_children_set(2, BUCKET1);
-	$server->max_children_set(5, BUCKET2);
-	$server->register_child_run("process_child_run_1", BUCKET1);
-	$server->register_child_run("process_child_run_2", BUCKET2);
+	$server->add_bucket(IMAGES);
+	$server->add_bucket(DOCUMENTS);
+	$server->max_children_set(2, IMAGES);
+	$server->max_children_set(5, DOCUMENTS);
+	$server->register_child_run("process_child_run_1", IMAGES);
+	$server->register_child_run("process_child_run_2", DOCUMENTS);
 
 	$data_set = array();
 	for($i=0; $i<10; $i++) $data_set[] = $i;
 
 	/* add work to bucket 1 */
 	shuffle($data_set);
-	$server->addwork($data_set, "", BUCKET1);
+	$server->addwork($data_set, "", IMAGES);
 
 	/* add work to bucket 2 */
 	shuffle($data_set);
-	$server->addwork($data_set, "", BUCKET2);
+	$server->addwork($data_set, "", DOCUMENTS);
 
 	/* wait until all work allocated */
-	while ($server->work_sets_count(BUCKET1) > 0 || $server->work_sets_count(BUCKET2) > 0)
+	while ($server->work_sets_count(IMAGES) > 0 || $server->work_sets_count(DOCUMENTS) > 0)
 	{
-		echo "work set count(1): " . $server->work_sets_count(BUCKET1) . ", count(2): " . $server->work_sets_count(BUCKET2) . "\n";
-		if ($server->work_sets_count(BUCKET1) > 0) $server->process_work(false, BUCKET1);
-		if ($server->work_sets_count(BUCKET2) > 0) $server->process_work(false, BUCKET2);
+		echo "work set count(1): " . $server->work_sets_count(IMAGES) . ", count(2): " . $server->work_sets_count(DOCUMENTS) . "\n";
+		if ($server->work_sets_count(IMAGES) > 0) $server->process_work(false, IMAGES);
+		if ($server->work_sets_count(DOCUMENTS) > 0) $server->process_work(false, DOCUMENTS);
 		sleep(1);
 	}
 

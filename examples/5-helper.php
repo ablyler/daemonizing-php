@@ -25,13 +25,11 @@ function process_child_run($data_set)
 
 function helper()
 {
-	echo "starting helper" . PHP_EOL;
+	echo "Starting helper" . PHP_EOL;
 
-	for ($i = 0; $i < 3; $i++)
+	while(true)
 	{
-		echo "helper: " . $i . PHP_EOL;
-		sleep(1);
+		echo "Checking to make sure that image processor is still running." . PHP_EOL;
+		sleep(3);
 	}
-
-	exit();
 }

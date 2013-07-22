@@ -23,5 +23,5 @@ function process_child_run($data_set)
 
 function prefork()
 {
-  echo "I'm closing resources..." . PHP_EOL;
+  echo "Closing open MySQL Connections" . PHP_EOL;
 }

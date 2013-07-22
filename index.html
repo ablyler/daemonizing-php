@@ -262,7 +262,7 @@ $server->max_work_per_child_set(3);
 $server->register_child_run("process_child_run");
 
 /* add work units */
-$data_set = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+$data_set = db_work_get();
 $server->addwork($data_set);
 
 /* process work blocking mode */
@@ -288,21 +288,21 @@ function process_child_run($data_set)
 					</section>
 					<section>
 						<h2>Buckets</h2>
-<pre><code>define("BUCKET1", 1);
-define("BUCKET2", 2);
+<pre><code>define("IMAGES", 1);
+define("DOCUMENTS", 2);
 
-$server->add_bucket(BUCKET1);
-$server->add_bucket(BUCKET2);
-$server->max_children_set(2, BUCKET1);
-$server->max_children_set(5, BUCKET2);
-$server->register_child_run("process_child_run_1", BUCKET1);
-$server->register_child_run("process_child_run_2", BUCKET2);
+$server->add_bucket(IMAGES);
+$server->add_bucket(DOCUMENTS);
+$server->max_children_set(2, IMAGES);
+$server->max_children_set(5, DOCUMENTS);
+$server->register_child_run("process_child_run_1", IMAGES);
+$server->register_child_run("process_child_run_2", DOCUMENTS);
 
 $data_set = array();
 for($i=0; $i<100; $i++) $data_set[] = $i;
 
-$server->addwork($data_set, "", BUCKET1);
-$server->addwork($data_set, "", BUCKET2);
+$server->addwork($data_set, "", IMAGES);
+$server->addwork($data_set, "", DOCUMENTS);
 </code></pre>
 						<aside class="notes">
 							Andy
@@ -354,7 +354,7 @@ function helper()
 
 	for ($i = 0; $i < 3; $i++)
 	{
-		echo "helper: " . $i . PHP_EOL;
+		pcntl_exec('/usr/bin/image_processor', array('-l'));
 		sleep(1);
 	}
 

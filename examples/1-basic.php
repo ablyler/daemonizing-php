@@ -17,5 +17,5 @@ $server->process_work(true);
 /* registered call back function */
 function process_child_run($data_set)
 {
-  echo "I'm child working on: " . implode(",", $data_set) . PHP_EOL;
+  echo "I'm a child working on image: " . implode(",", $data_set) . PHP_EOL;
 }
