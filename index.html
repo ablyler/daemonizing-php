@@ -106,6 +106,8 @@
 
 						<aside class="notes">
 							Talk about the storage team.
+							Talk about starting in 2005
+							Mention bitleap
 						</aside>
 					</section>
 					<section>
@@ -113,6 +115,7 @@
 
 						<aside class="notes">
 							Talk about the storage team.
+							mention Gentoo
 						</aside>
 					</section>
 					<section>
@@ -127,6 +130,8 @@
 
 						<aside class="notes">
 							Talk about the storage team.
+							Recently we launched Copy
+							And that we're going to be using Copy for examples
 						</aside>
 					</section>
 					<section>
@@ -148,23 +153,8 @@
 
 						<aside class="notes">
 							Talk about the storage team.
-						</aside>
-					</section>
-					<section>
-						<h2>Why PHP?</h2>
-						<p>
-							<ul>
-								<li>Fast and easy development</li>
-								<li>Works well for both web sites and backends</li>
-								<li>Popularity (makes it easier to find developers)</li>
-								<li>The founding developers knew it</li>
-								<li>Allows us to share code across products</li>
-								<li>Ability to share code between Appliance and Cloud</li>
-							</ul>
-						</p>
-
-						<aside class="notes">
-							Jon
+							In order to make this all happen
+							There area lot of daemons involved
 						</aside>
 					</section>
 				</section>
@@ -192,11 +182,12 @@
 
 						<aside class="notes">
 							Jon
+							When talking about daemons, the other two words you commonly hear are:
+							Forking and Threading.
 						</aside>
 					</section>
 					<section>
-						Talk about us just focusing on how to fork and divy up work. Not about assigning PIDS or init scripts
-
+						<h3>This talk is just going to focus on process forking</h3>
 					</section>
 
 					<section>
@@ -211,6 +202,9 @@
 							<source src="./videos/forking.mov" type="video/mp4">
 							Your browser does not support the video tag.
 						</video>
+						<aside>
+							Now let's look at an example of how Copy uses this.
+						</aside>
 					</section>
 				</section>
 
@@ -400,25 +394,6 @@ function helper()
 				<!-- Real World Results -->
 				<section>
 					<section>
-						<h2>Storage Daemon</h2>
-						<video width="100%" height="500px" data-autoplay loop muted>
-							<source src="./videos/cloud.mov" type="video/mp4">
-							Your browser does not support the video tag.
-						</video>
-
-						<aside class="notes">
-							Jon
-						</aside>
-					</section>
-					<section>
-						<h2>Our Daemons at work</h2>
-						<img src="./images/screenshot.png" style="height:500px;" />
-
-						<aside class="notes">
-							Andy
-						</aside>
-					</section>
-					<section>
 						<h2>Statistics</h2>
 						<p class="fragment fade-in">A backup is started <strong>every two seconds</strong></p>
 						<p class="fragment fade-in">Cloud processes a <strong>petabyte</strong> every <strong>1.5 days</strong></p>
@@ -428,6 +403,22 @@ function helper()
 							<li class="fragment fade-in"><strong>1 billion</strong> files.</li>
 							<li class="fragment fade-in"><strong>1 petabyte</strong> of data.</li>
 						</ul>
+						<aside class="notes">
+							Jon
+						</aside>
+					</section>
+					<section>
+						<h2>Why PHP?</h2>
+						<p>
+							<ul>
+								<li>Fast and easy development</li>
+								<li>Works well for both web sites and backends</li>
+								<li>Popularity (makes it easier to find developers)</li>
+								<li>The founding developers knew it</li>
+								<li>Allows us to share code across products</li>
+								<li>Ability to share code between Appliance and Cloud</li>
+							</ul>
+						</p>
 						<aside class="notes">
 							Jon
 						</aside>
