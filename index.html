@@ -86,7 +86,6 @@
 						Jon
 					</aside>
 				</section>
-
 				<section>
 					<h2>Presentation Agenda</h2>
 					<p>Background</p>
@@ -98,27 +97,13 @@
 						Jon
 					</aside>
 				</section>
-
-				<!-- Background -->
 				<section>
 					<section>
-						<h2>Why Daemonize PHP?</h2>
+						<h2>What We Do</h2>
+						Talk about the storag team. Add Backup and Copy Logo.
+						<h2>Backup + Copy</h2>
 						<aside class="notes">
-							Andy
-
-							To better understand why we use PHP, let's take a step back and look at the problem we solved using PHP Daemons.
-						</aside>
-					</section>
-					<section>
-						<h2>Copy</h2>
-
-						<img src="images/bbs-1k-foot-architecture.png" style="border: 0px; box-shadow: none;" />
-						<aside class="notes">
-							Andy
-
-							Source Servers: Windows / Linux
-							- run our C++ based agent
-							Backup Appliance & Cloud are Linux machines that we manage
+							Jon
 						</aside>
 					</section>
 					<section>
@@ -135,6 +120,87 @@
 
 						<aside class="notes">
 							Jon
+						</aside>
+					</section>
+				</section>
+				<!-- What is a Daemon? -->
+				<section>
+					<section>
+						<h2>Daemons, Forking and Threading</h2>
+						<p style="text-align: left;"><strong>dae·mon</strong> (/ˈdēmən/) Noun
+						<ol style="padding-left: 15px; width: 100%;">
+							<li>A background process that handles requests for services such as print spooling and is dormant when not required.</li>
+						</ol>
+						</p>
+
+						<p style="text-align: left; padding-top: 15px;"><strong>fork·ing</strong> (/fɔrkɪn/) Verb
+						<ol style="text-align: left; padding-left: 15px; width: 100%;">
+							<li>Dividing a process into a parent and a child.</li>
+						</ol>
+						</p>
+
+						<p style="text-align: left; padding-top: 15px;"><strong>thread·ing</strong> (/THredɪn/) Verb
+						<ol style="padding-left: 15px; width: 100%;">
+							<li>Executing part of a program independently of other parts.</li>
+						</ol>
+						</p>
+
+						<aside class="notes">
+							Jon
+						</aside>
+					</section>
+					<section>
+						Talk about us just focusing on how to fork and divy up work. Not about assigning PIDS or init scripts
+
+					</section>
+
+					<section>
+						<video width="100%" height="100%" muted>
+							<source src="./videos/forking.mov" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+					</section>
+
+					<section>
+						<video width="100%" height="100%" data-autoplay muted>
+							<source src="./videos/forking.mov" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+					</section>
+				</section>
+
+				<!-- Background -->
+				<section>
+					<section>
+						<h2>Why Daemonize PHP?</h2>
+						<aside class="notes">
+							Andy
+
+							To better understand why we use PHP, let's take a step back and look at the problem we solved using PHP Daemons.
+						</aside>
+					</section>
+					<section>
+						<h2>Our Forking Library</h2>
+						<a href="http://git.io/forkdaemon-php" style="margin-bottom: 50px;">http://git.io/forkdaemon-php</a>
+
+						<p>Actively maintained for 5+ years.</p>
+						<p>Open source just days ago!</p>
+
+						<aside class="notes">
+							Andy
+						</aside>
+					</section>
+					<section>
+						<h2>Copy</h2>
+
+						<h3>Switch these out with applicable Copy images</h3>
+						<img src="images/bbs-1k-foot-architecture.png" style="border: 0px; box-shadow: none;" />
+						<aside class="notes">
+							Andy
+
+							Source Servers: Windows / Linux
+							- run our C++ based agent
+							Backup Appliance & Cloud are Linux machines that we manage
 						</aside>
 					</section>
 					<section>
@@ -193,56 +259,11 @@
 					</section>
 				</section>
 
-				<!-- What is a Daemon? -->
+				<!-- Thumbnailer Example -->
 				<section>
 					<section>
-						<h2>Defining Daemons / Forking / Threading</h2>
-						<p style="text-align: left;"><strong>dae·mon</strong> (/ˈdēmən/) Noun
-						<ol style="padding-left: 15px; width: 100%;">
-							<li>A background process that handles requests for services such as print spooling and is dormant when not required.</li>
-						</ol>
-						</p>
-
-						<p style="text-align: left; padding-top: 15px;"><strong>fork·ing</strong> (/fɔrkɪn/) Verb
-						<ol style="text-align: left; padding-left: 15px; width: 100%;">
-							<li>Dividing a process into a parent and a child.</li>
-						</ol>
-						</p>
-
-						<p style="text-align: left; padding-top: 15px;"><strong>thread·ing</strong> (/THredɪn/) Verb
-						<ol style="padding-left: 15px; width: 100%;">
-							<li>Executing part of a program independently of other parts.</li>
-						</ol>
-						</p>
-
-						<aside class="notes">
-							Jon
-						</aside>
-					</section>
-
-					<section>
-						<video width="100%" height="100%" muted>
-							<source src="./videos/forking.mov" type="video/mp4">
-							Your browser does not support the video tag.
-						</video>
-					</section>
-
-					<section>
-						<video width="100%" height="100%" data-autoplay muted>
-							<source src="./videos/forking.mov" type="video/mp4">
-							Your browser does not support the video tag.
-						</video>
-					</section>
-				</section>
-
-				<!-- Our Forking Library -->
-				<section>
-					<section>
-						<h2>Our Forking Library</h2>
-						<a href="http://git.io/forkdaemon-php" style="margin-bottom: 50px;">http://git.io/forkdaemon-php</a>
-
-						<p>Actively maintained for 5+ years.</p>
-						<p>Open source just days ago!</p>
+						<h2>The Copy Thumbnailer</h2>
+						<p>Creating thumbnails of all uploaded documents and images</p>
 
 						<aside class="notes">
 							Andy
@@ -408,6 +429,15 @@ function helper()
 						<aside class="notes">
 							Jon
 						</aside>
+					</section>
+					<section>
+						<h1>Daemonizing PHP</h1>
+						<h3>Using PHP to run your backend processes</h3>
+						<p>
+							<small>By <a href="http://andyblyler.com">Andy Blyler</a> (<a href="http://twitter.com/ablyler">@ablyler</a>) and <a href="">Jon Kuperman</a> (<a href="http://twitter.com/insitedesignlab">@insitedesignlab</a>) </small>
+						</p>
+						<h3>GitHub Repo</h3>
+						<a href="http://git.io/forkdaemon-php" style="margin-bottom: 50px;">http://git.io/forkdaemon-php</a>
 					</section>
 				</section>
 			</div>
