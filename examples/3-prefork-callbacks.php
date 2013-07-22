@@ -23,5 +23,6 @@ function process_child_run($data_set)
 
 function prefork()
 {
+  // code to close connections
   echo "Closing open MySQL Connections" . PHP_EOL;
 }
