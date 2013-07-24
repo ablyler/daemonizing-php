@@ -6,7 +6,6 @@ require_once(__DIR__ . '/../modules/forkdaemon-php/fork_daemon.php');
 $server = new fork_daemon();
 $server->max_children_set(5);
 $server->max_work_per_child_set(3);
-$server->register_parent_child_exit("process_child_exit");
 
 test_bucket();
 
@@ -38,7 +37,6 @@ function test_bucket()
 	/* wait until all work allocated */
 	while ($server->work_sets_count(IMAGES) > 0 || $server->work_sets_count(DOCUMENTS) > 0)
 	{
-		echo "work set count(1): " . $server->work_sets_count(IMAGES) . ", count(2): " . $server->work_sets_count(DOCUMENTS) . "\n";
 		if ($server->work_sets_count(IMAGES) > 0) $server->process_work(false, IMAGES);
 		if ($server->work_sets_count(DOCUMENTS) > 0) $server->process_work(false, DOCUMENTS);
 		sleep(1);
@@ -47,7 +45,6 @@ function test_bucket()
 	/* wait until all children finish */
 	while ($server->children_running() > 0)
 	{
-		echo "waiting for " . $server->children_running() . " children to finish\n";
 		sleep(1);
 	}
 }
@@ -70,8 +67,3 @@ function process_child_run_2($data_set, $identifier = "")
 	sleep(rand(4,8));
 }
 
-/* registered call back function */
-function process_child_exit($pid, $identifier = "")
-{
-	echo "Child $pid just finished" . ($identifier == "" ? "" : " (id:$identifier)") . "\n";
-}
