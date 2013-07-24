@@ -312,23 +312,34 @@
 					</section>
 					<section>
 						<h2>Introduce Forking</h2>
+					</section>
+					<section>
 <pre><code>/* setup forking daemon */
 $server = new fork_daemon();
-$server->max_work_per_child_set(3);
-$server->register_child_run("process_child_run");
+$server->max_children_set(4);
+$server->max_work_per_child_set(3);</code></pre>
+					</section>
+					<section>
+<pre><code>$server->register_child_run("generate");
 
-/* add work units */
-$data_set = db_work_get();
-$server->addwork($data_set);
+/* registered call back function */
+function generate($files)
+{
+  foreach ($files as $file)
+  {
+  	$file->generate_thumbnails();
+  }
+}
+</code></pre>
+					</section>
+					<section>
+<pre><code>/* add work units */
+$files = db_work_get();
+$server->addwork($files);
 
 /* process work blocking mode */
 $server->process_work(true);
-
-/* registered call back function */
-function process_child_run($data_set)
-{
-  echo "I'm child working on: " . implode(",", $data_set) . PHP_EOL;
-}</pre></code>
+</pre></code>
 						<aside class="notes">
 							Jon
 						</aside>
@@ -351,14 +362,14 @@ $server->add_bucket(IMAGES);
 $server->add_bucket(DOCUMENTS);
 $server->max_children_set(2, IMAGES);
 $server->max_children_set(5, DOCUMENTS);
-$server->register_child_run("process_child_run_1", IMAGES);
-$server->register_child_run("process_child_run_2", DOCUMENTS);
+$server->register_child_run("generate_images", IMAGES);
+$server->register_child_run("generate_documents", DOCUMENTS);
 
-$data_set = array();
-for($i=0; $i<100; $i++) $data_set[] = $i;
+$images = db_work_get('images');
+$documents = db_work_get('documents');
 
-$server->addwork($data_set, "", IMAGES);
-$server->addwork($data_set, "", DOCUMENTS);
+$server->addwork($images, '', IMAGES);
+$server->addwork($documents, '', DOCUMENTS);
 </code></pre>
 						<aside class="notes">
 							Andy
@@ -382,7 +393,7 @@ $server->register_parent_prefork(array('prefork'));
 
 function prefork()
 {
-  echo "I'm closing resources..." . PHP_EOL;
+  db_close_all_connections();
 }</code></pre>
 
 						<aside class="notes">
@@ -396,25 +407,15 @@ function prefork()
 						</video>
 					</section>
 					<section>
-						<h2>Dependencies Crashing</h2>
-					</section>
-					<section>
 						<h2>Helpers</h2>
 <pre><code>/* setup forking daemon */
 $server = new fork_daemon();
 $server->helper_process_spawn('helper');
 ...
+
 function helper()
 {
-	echo "starting helper" . PHP_EOL;
-
-	for ($i = 0; $i < 3; $i++)
-	{
-		pcntl_exec('/usr/bin/image_processor', array('-l'));
-		sleep(1);
-	}
-
-	exit();
+   pcntl_exec('/usr/bin/image_processor', array('-l'));
 }</code></pre>
 
 						<aside class="notes">
@@ -464,28 +465,7 @@ error_count: 0
 						<h2>Statistics</h2>
 						<p class="fragment fade-in">Cloud processes a <strong>petabyte</strong> every 1.5 days</p>
 						<p class="fragment fade-in">Copy is generating <strong>125 thumbnails</strong> per second</p>
-						<p class="fragment fade-in">Since launching <strong>4</strong> months ago Copy has grown:</p>
-						<ul style="list-style:none;">
-							<li class="fragment fade-in"><strong>1.3 million</strong> users.</li>
-							<li class="fragment fade-in"><strong>1 billion</strong> files.</li>
-							<li class="fragment fade-in"><strong>1 petabyte</strong> of data.</li>
-						</ul>
-						<aside class="notes">
-							Jon
-						</aside>
-					</section>
-					<section>
-						<h2>Why PHP?</h2>
-						<p>
-							<ul>
-								<li>Fast and easy development</li>
-								<li>Works well for both web sites and backends</li>
-								<li>Popularity (makes it easier to find developers)</li>
-								<li>The founding developers knew it</li>
-								<li>Allows us to share code across products</li>
-								<li>Ability to share code between Appliance and Cloud</li>
-							</ul>
-						</p>
+						<p class="fragment fade-in">In the last <strong>4 months</strong> Copy has added <strong>1.3 million users</strong>.</p>
 						<aside class="notes">
 							Jon
 						</aside>
