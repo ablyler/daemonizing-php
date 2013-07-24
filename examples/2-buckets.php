@@ -6,7 +6,6 @@ require_once(__DIR__ . '/../modules/forkdaemon-php/fork_daemon.php');
 $server = new fork_daemon();
 $server->max_children_set(5);
 $server->max_work_per_child_set(3);
-$server->register_child_run("process_child_run");
 $server->register_parent_child_exit("process_child_exit");
 
 test_bucket();
@@ -58,9 +57,16 @@ function test_bucket()
  */
 
 /* registered call back function */
-function process_child_run($data_set, $identifier = "")
+function process_child_run_1($data_set, $identifier = "")
 {
-	echo "I'm child working on: " . implode(",", $data_set) . ($identifier == "" ? "" : " (id:$identifier)") . "\n";
+	echo "I'm an Image child working on: " . implode(",", $data_set) . ($identifier == "" ? "" : " (id:$identifier)") . "\n";
+	sleep(rand(4,8));
+}
+
+/* registered call back function */
+function process_child_run_2($data_set, $identifier = "")
+{
+	echo "I'm a Document child working on: " . implode(",", $data_set) . ($identifier == "" ? "" : " (id:$identifier)") . "\n";
 	sleep(rand(4,8));
 }
 
