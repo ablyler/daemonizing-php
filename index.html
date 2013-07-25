@@ -75,10 +75,6 @@
 						Lead <a href="https://www.barracuda.com/backup">Backup</a> Team Software Engineer @ <a href="https://www.barracuda.com/">Barracuda</a><br />
 						Working on the <a href="https://www.barracuda.com/backup">Backup</a> product since 2006
 					</p>
-
-					<aside class="notes">
-						Andy
-					</aside>
 				</section>
 				<section>
 					<h2>WHOIS Jon Kuperman</h2>
@@ -87,10 +83,6 @@
 						Software Engineer @ <a href="https://www.barracuda.com/">Barracuda</a> on the <a href="https://www.barracuda.com/backup">Backup</a> Team<br />
 						Organizer of the <a href="http://www.meetup.com/ann-arbor-php-mysql/">Ann Arbor PHP Meetup</a>
 					</p>
-
-					<aside class="notes">
-						Jon
-					</aside>
 				</section>
 				<section>
 					<h2>Presentation Agenda</h2>
@@ -99,10 +91,6 @@
 					<p>What Is A Daemon</p>
 					<p>Using Our Forking Library</p>
 					<p>Real World Results</p>
-
-					<aside class="notes">
-						Jon
-					</aside>
 				</section>
 				<!-- What We Do -->
 				<section>
@@ -111,73 +99,33 @@
 					</section>
 					<section>
 						<img src="./images/barracuda-backup.png" style="border: 0px; box-shadow: none;" />
-
-						<aside class="notes">
-							Talk about the storage team.
-							Talk about starting in 2005
-							Mention bitleap
-						</aside>
 					</section>
 					<section>
 						<img src="./images/BBS190.png" style="border: 0px; box-shadow: none;" />
-
-						<aside class="notes">
-							Talk about the storage team.
-							mention Gentoo
-						</aside>
 					</section>
 					<section>
 						<img src="./images/BBS1090.png" style="border: 0px; box-shadow: none;" />
-
-						<aside class="notes">
-							Talk about the storage team.
-							mention Gentoo
-						</aside>
 					</section>
 					<section>
 						<img src="./images/backup-webui.png" style="border: 0px; box-shadow: none;" />
 					</section>
 					<section>
 						<img src="./images/cloud.png" style="border: 0px; box-shadow: none;" />
-
-						<aside class="notes">
-							Talk about the storage team.
-						</aside>
 					</section>
 					<section>
 						<img src="./images/Copy-Logo-Vertical.png" style="border: 0px; box-shadow: none;" />
-
-						<aside class="notes">
-							Talk about the storage team.
-							Recently we launched Copy
-							And that we're going to be using Copy for examples
-						</aside>
 					</section>
 					<section>
 						<img src="./images/copy-desktop.png" style="border: 0px; box-shadow: none;" />
-
-						<aside class="notes">
-							Talk about the storage team.
-						</aside>
 					</section>
 					<section>
 						<img src="./images/copy-mobile.png" style="border: 0px; box-shadow: none;" />
-
-						<aside class="notes">
-							Talk about the storage team.
-						</aside>
 					</section>
 					<section>
 						<img src="./images/copy-webui.png" style="border: 0px; box-shadow: none;" />
 					</section>
 					<section>
 						<img src="./images/cloud.png" style="border: 0px; box-shadow: none;" />
-
-						<aside class="notes">
-							Talk about the storage team.
-							In order to make this all happen
-							There area lot of daemons involved
-						</aside>
 					</section>
 				</section>
 				<!-- How we do it -->
@@ -187,17 +135,9 @@
 					</section>
 					<section>
 						<img src="./images/open-source.png" style="border: 0px; box-shadow: none;" />
-
-						<aside class="notes">
-							Lots and lots of Open Source
-						</aside>
 					</section>
 					<section>
 						<img src="./images/tag-cloud-daemons.png" style="border: 0px; box-shadow: none;" />
-
-						<aside class="notes">
-							And lots and lots of daemons
-						</aside>
 					</section>
 				</section>
 				<!-- What is a Daemon? -->
@@ -225,12 +165,6 @@
 							<li>Executing part of a program independently of other parts.</li>
 						</ol>
 						</p>
-
-						<aside class="notes">
-							Jon
-							When talking about daemons, the other two words you commonly hear are:
-							Forking and Threading.
-						</aside>
 					</section>
 					<section>
 						<h3>This talk is just going to focus on process forking</h3>
@@ -248,9 +182,6 @@
 							<source src="./videos/forking.mov" type="video/mp4">
 							Your browser does not support the video tag.
 						</video>
-						<aside class="notes">
-							Now let's look at an example of how Copy uses this.
-						</aside>
 					</section>
 				</section>
 
@@ -262,23 +193,12 @@
 
 						<p>Actively maintained for 5+ years.</p>
 						<p>Open source just days ago!</p>
-
-						<aside class="notes">
-							Andy
-						</aside>
 					</section>
 					<section>
 						<h1>The Copy Thumbnailer</h1>
-
-						<aside class="notes">
-							Andy
-						</aside>
 					</section>
 					<section>
 						<img src="./images/thumbnailer.png" style="border: none;" />
-						<aside class="notes">
-							Jon
-						</aside>
 					</section>
 					<section>
 						<img src='./images/copy-thumbnail-formats.png' style='border: none;' />
@@ -337,9 +257,6 @@ $server->addwork($files);
 /* process work blocking mode */
 $server->process_work(true);
 </pre></code>
-						<aside class="notes">
-							Jon
-						</aside>
 					</section>
 					<section>
 						<video width="100%" height="100%" data-autoplay muted>
@@ -368,9 +285,6 @@ $documents = db_work_get('documents');
 $server->addwork($images, '', IMAGES);
 $server->addwork($documents, '', DOCUMENTS);
 </code></pre>
-						<aside class="notes">
-							Andy
-						</aside>
 					</section>
 					<section>
 						<video width="100%" height="100%" data-autoplay muted>
@@ -392,10 +306,6 @@ function prefork()
 {
   db_close_all_connections();
 }</code></pre>
-
-						<aside class="notes">
-							Andy
-						</aside>
 					</section>
 					<section>
 						<video width="100%" height="100%" data-autoplay muted>
@@ -414,10 +324,6 @@ function helper()
 {
    pcntl_exec('/usr/bin/image_processor', array('-l'));
 }</code></pre>
-
-						<aside class="notes">
-							Andy
-						</aside>
 					</section>
 					<section>
 						<video width="100%" height="100%" data-autoplay muted>
@@ -465,9 +371,6 @@ error_count: 0
 						<p class="fragment fade-in">Cloud processes a <strong>petabyte</strong> every 1.5 days</p>
 						<p class="fragment fade-in">Copy is generating <strong>125 thumbnails</strong> per second</p>
 						<p class="fragment fade-in">In the last <strong>4 months</strong> Copy has added <strong>1.3 million users</strong>.</p>
-						<aside class="notes">
-							Jon
-						</aside>
 					</section>
 					<section>
 						<h1>Daemonizing PHP</h1>
@@ -500,12 +403,6 @@ error_count: 0
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-				multiplex: {
-					secret: '13747088477294767703', // null so the clients do not have control of the master presentation
-					id: '893f630e3dff9712', // id, obtained from socket.io server
-					url: 'andyblyler.com:1948' // Location of your socket.io server
-				},
-
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
@@ -513,7 +410,7 @@ error_count: 0
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
 					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
